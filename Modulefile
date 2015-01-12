@@ -1,0 +1,10 @@
+name          'pizzaops-puppetdb_shared_cert'
+version       '0.1.0'
+source        'https://github.com/pizzaops/pizzaops-puppetdb_shared_cert'
+author        'pizzaops'
+license       'Apache 2.0'
+summary       'Generate and distribute a shared cert to your PuppetDB nodes.'
+description   ''
+project_page  'https://github.com/pizzaops/pizzaops-puppetdb_shared_cert'
+
+dependency 'puppetlabs/stdlib'
