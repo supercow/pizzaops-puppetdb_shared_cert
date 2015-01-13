@@ -1,5 +1,3 @@
-#### Table of Contents
-
 ## Overview
 
 Generates a shared certificate to be used for load-balancing PuppetDB nodes in Puppet Enterprise, as per the documented [known issue](https://docs.puppetlabs.com/pe/3.7/release_notes_known_issues.html#puppetdb-behind-a-load-balancer-causes-puppet-server-errors).
