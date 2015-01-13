@@ -4,17 +4,6 @@
 # It sets variables according to platform.
 #
 class puppetdb_shared_cert::params {
-  case $::osfamily {
-    'Debian': {
-      $package_name = 'puppetdb_shared_cert'
-      $service_name = 'puppetdb_shared_cert'
-    }
-    'RedHat', 'Amazon': {
-      $package_name = 'puppetdb_shared_cert'
-      $service_name = 'puppetdb_shared_cert'
-    }
-    default: {
-      fail("${::operatingsystem} not supported")
-    }
-  }
+  $certname = 'pe-internal-puppetdb'
+  $dns_alt_names = ['puppetdb',"puppetdb.${::domain}"]
 }

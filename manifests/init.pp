@@ -1,21 +1,23 @@
 # == Class: puppetdb_shared_cert
 #
-# Full description of class puppetdb_shared_cert here.
+#  Shared data class for puppetdb_shared_cert.
 #
 # === Parameters
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
+# [*certname*]
+#   Primary certname for shared PuppetDB cert.
 #
+# [*dns_alt_names*]
+#   Array of subject alternative names for shared PuppetDB cert. Should include
+#   loadbalancer's DNS name.
+
 class puppetdb_shared_cert (
-  $package_name = $::puppetdb_shared_cert::params::package_name,
-  $service_name = $::puppetdb_shared_cert::params::service_name,
+  $certname = $::puppetdb_shared_cert::params::certname,
+  $dns_alt_names = $::puppetdb_shared_cert::params::dns_alt_names,
 ) inherits ::puppetdb_shared_cert::params {
 
   # validate parameters here
+  validate_string($certname)
+  validate_array($dns_alt_names)
 
-  class { '::puppetdb_shared_cert::install': } ->
-  class { '::puppetdb_shared_cert::config': } ~>
-  class { '::puppetdb_shared_cert::service': } ->
-  Class['::puppetdb_shared_cert']
 }

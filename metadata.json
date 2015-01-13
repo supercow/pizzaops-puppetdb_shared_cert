@@ -10,7 +10,11 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 1.0.0"
+      "version_requirement": ">= 4.5.0"
+    },
+    {
+      "name": "reidmv-puppet_certificate",
+      "version_requirement": ">= 0.0.2"
     }
   ]
 }
