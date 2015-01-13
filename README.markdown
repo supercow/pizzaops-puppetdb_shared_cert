@@ -4,7 +4,7 @@ Generates a shared certificate to be used for load-balancing PuppetDB nodes in P
 
 ## Module Description
 
-This module uses `reidmv-puppet_certificate` to generate certificates on the CA node, and then distributes them to the PuppetDB node via standard file resources, before the puppet_enterprise::puppetdb class tries to copy them into PuppetDB's ssl directory.
+This module uses `reidmv-puppet_certificate` to generate certificates on the CA node, and then distributes them to the PuppetDB node via standard file resources, before the `puppet_enterprise::puppetdb` class copies them into PuppetDB's ssl directory.
 
 ## Setup
 
@@ -33,3 +33,5 @@ class { 'puppetdb_shared_cert::puppetdb':
 ```
 
 You may also supply all data directly to the `::puppetdb_shared_cert` class to reduce duplication.
+
+NB: You will need to supply the datadabase password to the `puppet_enterprise::profile::puppetdb` class, via the console or hiera, when setting up multiple PuppetDBs. That is the only required configuration in my testing.
