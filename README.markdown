@@ -14,7 +14,7 @@ If you're using r10k, you'll need to include the dependencies, `puppetlabs-stdli
 
 ## Usage
 
-Classify the CA master with `puppetdb_shared_cert::ca`. By default, it will create a certificate with a certname of `pe-internal-puppetdb` and alt-names of `puppetdb, puppetdb.${::domain}`.
+Classify the CA master with `puppetdb_shared_cert::ca`. By default, it will read `$::puppet_enterprise::profile::puppetdb::certname` for the certname and set the alt-names to `puppetdb,puppetdb.${domain}`.
 
 ```
 class { 'puppetdb_shared_cert::ca':
@@ -32,6 +32,6 @@ class { 'puppetdb_shared_cert::puppetdb':
 }
 ```
 
-You may also supply all data directly to the `::puppetdb_shared_cert` class to reduce duplication.
+You may also supply all data directly to the `::puppetdb_shared_cert` class to reduce duplication. For example you might add it to the PE infrastructure console group, and then add the ca and puppetdb classes to the appropriate groups.
 
 NB: You will need to supply the datadabase password to the `puppet_enterprise::profile::puppetdb` class, via the console or hiera, when setting up multiple PuppetDBs. That is the only required configuration in my testing.

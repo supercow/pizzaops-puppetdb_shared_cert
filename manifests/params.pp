@@ -4,6 +4,6 @@
 # It sets variables according to platform.
 #
 class puppetdb_shared_cert::params {
-  $certname = 'pe-internal-puppetdb'
+  $certname = pick($::puppet_enterprise::profile::puppetdb::certname, 'pe-internal-puppetdb')
   $dns_alt_names = ['puppetdb',"puppetdb.${::domain}"]
 }
