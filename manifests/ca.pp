@@ -1,4 +1,4 @@
-# == Class: puppetdb_shared_cert::generate
+# == Class: puppetdb_shared_cert::ca
 #
 #  Generate shared cert data for PuppetDB. You should classify your CA node
 #  with this class.
