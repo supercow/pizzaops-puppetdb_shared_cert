@@ -1,6 +1,6 @@
 {
   "name": "pizzaops-puppetdb_shared_cert",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "pizzaops",
   "summary": "Generate and distribute a shared cert to your PuppetDB nodes.",
   "license": "Apache 2.0",
