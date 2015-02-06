@@ -1,20 +1,38 @@
 {
   "name": "pizzaops-puppetdb_shared_cert",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": "pizzaops",
   "summary": "Generate and distribute a shared cert to your PuppetDB nodes.",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/pizzaops/pizzaops-puppetdb_shared_cert",
   "project_page": "https://github.com/pizzaops/pizzaops-puppetdb_shared_cert",
   "issues_url": "https://github.com/pizzaops/pizzaops-puppetdb_shared_cert/issues",
+  "operatingsystem_support": [
+    {
+    "operatingsystem":"RedHat",
+    "operatingsystemrelease":[ "5.0", "6.0", "7.0" ]
+    },
+    {
+    "operatingsystem":"Debian",
+    "operatingsystemrelease":[ "5.0", "6.0", "7.0" ]
+    },
+    {
+    "operatingsystem":"Suse",
+    "operatingsystemrelease":[ "10.0", "11.0", "12.0" ]
+    },
+    {
+    "operatingsystem":"Ubuntu",
+    "operatingsystemrelease": [ "14.04", "12.04", "10.04" ]
+    }
+   ],
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 4.5.0"
+      "version_requirement": ">= 4.5.0 < 5.0.0"
     },
     {
       "name": "reidmv-puppet_certificate",
-      "version_requirement": ">= 0.0.2"
+      "version_requirement": ">= 0.0.2 < 0.1.0"
     }
   ]
 }
