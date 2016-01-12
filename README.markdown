@@ -1,16 +1,24 @@
 ## Overview
 
-Generates a shared certificate to be used for load-balancing PuppetDB nodes in Puppet Enterprise, as per the documented [known issue](https://docs.puppetlabs.com/pe/3.7/release_notes_known_issues.html#puppetdb-behind-a-load-balancer-causes-puppet-server-errors).
+Generates shared certificates to be used for load-balancing Puppet Enterprise nodes such as PuppetDB and Node Classifiers, as per the documented [known issue](https://docs.puppetlabs.com/pe/3.7/release_notes_known_issues.html#puppetdb-behind-a-load-balancer-causes-puppet-server-errors).
 
 ## Module Description
 
-This module uses `reidmv-puppet_certificate` to generate certificates on the CA node, and then distributes them to the PuppetDB node via standard file resources, before the `puppet_enterprise::puppetdb` class copies them into PuppetDB's ssl directory.
+This module uses `reidmv-puppet_certificate` to generate certificates on the CA node, and then distributes them to the nodes via standard file resources. Note that most services will require dependencies on the Puppet_enterprise::certs class, for example:
+
+```
+pe_shared_cert { 'puppetdb.example.com':
+  certname      => 'puppetdb.example.com',
+  dns_alt_names => ['puppetdb'],
+  before        => Puppet_enterprise::Certs['pe-puppetdb'],
+}
+```
 
 ## Setup
 
 `puppet module install pizzaops-puppetdb_shared_cert`
 
-If you're using r10k, you'll need to include the dependencies, `puppetlabs-stdlib` 4.5.0, and `reidmv-puppet_certificate` 0.0.2.
+If you're using r10k, you'll need to include the dependencies, `puppetlabs-stdlib` 4.5.0, and `reidmv-puppet_certificate` 0.0.2. Please see the metadata.json file for the most up to date dependencies.
 
 ## Usage
 
