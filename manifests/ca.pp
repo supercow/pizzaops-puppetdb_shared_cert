@@ -1,21 +1,21 @@
-# == Class: puppetdb_shared_cert::ca
+# == Define: pe_shared_certs::ca
 #
-#  Generate shared cert data for PuppetDB. You should classify your CA node
-#  with this class.
+#  Generate shared cert data for shared PE certs. Each shared cert should
+#  have one of these declared on the CA/Master of Masters.
 #
 # === Parameters
 #
 # [*certname*]
-#   Primary certname for shared PuppetDB cert.
+#   Primary certname for the shared cert.
 #
 # [*dns_alt_names*]
-#   Array of subject alternative names for shared PuppetDB cert. Should include
+#   Array of subject alternative names for the shared cert. Should include
 #   loadbalancer's DNS name.
 
-class puppetdb_shared_cert::ca (
-  $certname = $puppetdb_shared_cert::certname,
-  $dns_alt_names = $puppetdb_shared_cert::dns_alt_names
-) inherits puppetdb_shared_cert {
+define pe_shared_cert::ca (
+  $certname = $name,
+  $dns_alt_names = [],
+) {
 
   validate_string($certname)
   validate_array($dns_alt_names)
