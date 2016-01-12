@@ -1,5 +1,7 @@
 define pe_shared_cert (
-  $certname = $name,
+  $certname  = $name,
+  $key_owner = 'root',
+  $key_group = '0',
 ) {
 
   validate_string($certname)
@@ -14,24 +16,24 @@ define pe_shared_cert (
     content => file("/etc/puppetlabs/puppet/ssl/certs/${certname}.pem"),
     path    => "/etc/puppetlabs/puppet/ssl/certs/${certname}.pem",
     mode    => '0644',
-    owner   => 'pe-puppet',
-    group   => 'pe-puppet'
+    owner   => $key_owner,
+    group   => $key_group,
   }
   file { "${certname}-private-key":
     ensure  => file,
     content => file("/etc/puppetlabs/puppet/ssl/private_keys/${certname}.pem"),
     path    => "/etc/puppetlabs/puppet/ssl/private_keys/${certname}.pem",
     mode    => '0640',
-    owner   => 'pe-puppet',
-    group   => 'pe-puppet'
+    owner   => $key_owner,
+    group   => $key_group,
   }
   file { "${certname}-public-key":
     ensure  => file,
     content => file("/etc/puppetlabs/puppet/ssl/public_keys/${certname}.pem"),
     path    => "/etc/puppetlabs/puppet/ssl/public_keys/${certname}.pem",
     mode    => '0644',
-    owner   => 'pe-puppet',
-    group   => 'pe-puppet'
+    owner   => $key_owner,
+    group   => $key_group,
   }
 }
 
